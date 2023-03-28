@@ -1,0 +1,197 @@
+//variables
+	var express = require('express'),
+	    router  = express.Router(),
+	    moment  = require('moment');
+
+	var model = require('../models/WheelAssyCTModel');
+
+//functions
+	//render
+	var renderWheelAssyCycleTime = function(req, res) {
+		res.render('Wheel Assembly CT/WheelAssyCT.ejs', {
+		});
+	}
+
+
+	//
+	var insertWHSpokeAssy = function(req, res, next) {
+		model.insertWHSpokeAssy(
+			req.body.line,
+			req.body.model,
+			req.body.oprtid,
+			req.body.time,
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+	var insertWHRV2 = function(req, res, next) {
+		model.insertWHRV2(
+			req.body.line,
+			req.body.model,
+			req.body.oprtid,
+			req.body.time,
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+	var insertWHNajimase = function(req, res, next) {
+		model.insertWHNajimase(
+			req.body.line,
+			req.body.model,
+			req.body.oprtid,
+			req.body.time,
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+	var insertWHT3W = function(req, res, next) {
+		model.insertWHT3W(
+			req.body.line,
+			req.body.model,
+			req.body.oprtid,
+			req.body.time,
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+	var insertWHAdjusting = function(req, res, next) {
+		model.insertWHAdjusting(
+			req.body.line,
+			req.body.model,
+			req.body.oprtid,
+			req.body.time,
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+	var insertWHFinalChecking = function(req, res, next) {
+		model.insertWHFinalChecking(
+			req.body.line,
+			req.body.model,
+			req.body.oprtid,
+			req.body.time,
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+	var insertWHStickerPaste = function(req, res, next) {
+		model.insertWHStickerPaste(
+			req.body.line,
+			req.body.model,
+			req.body.oprtid,
+			req.body.time,
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+	var getWHSpokeAssy = function(req, res, next) {
+		model.getWHSpokeAssy(
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+	var getWHRV2 = function(req, res, next) {
+		model.getWHRV2(
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+	var getWHNajimase = function(req, res, next) {
+		model.getWHNajimase(
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+	var getWHT3W = function(req, res, next) {
+		model.getWHT3W(
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+	var getWHAdjusting = function(req, res, next) {
+		model.getWHAdjusting(
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+	var getWHFinalChecking = function(req, res, next) {
+		model.getWHFinalChecking(
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+	var getWHStickerPaste = function(req, res, next) {
+		model.getWHStickerPaste(
+			function(err, data) {
+				req.raw = data;
+				next();
+			}
+		)
+	}
+
+
+	//
+	var done = function(req,res) {
+		res.json(req.raw);
+	}
+
+//routers
+	// front page
+	router.get('/wheel-assembly-cycle-time', renderWheelAssyCycleTime);
+
+	router.post('/insertWHSpokeAssy', insertWHSpokeAssy, done);
+	router.post('/insertWHRV2', insertWHRV2, done);
+	router.post('/insertWHNajimase', insertWHNajimase, done);
+	router.post('/insertWHT3W', insertWHT3W, done);
+	router.post('/insertWHAdjusting', insertWHAdjusting, done);
+	router.post('/insertWHFinalChecking', insertWHFinalChecking, done);
+	router.post('/insertWHStickerPaste', insertWHStickerPaste, done);
+	router.post('/getWHSpokeAssy', getWHSpokeAssy, done);
+	router.post('/getWHRV2', getWHRV2, done);
+	router.post('/getWHNajimase', getWHNajimase, done);
+	router.post('/getWHT3W', getWHT3W, done);
+	router.post('/getWHAdjusting', getWHAdjusting, done);
+	router.post('/getWHFinalChecking', getWHFinalChecking, done);
+	router.post('/getWHStickerPaste', getWHStickerPaste, done);
+
+//export
+	module.exports = router;
